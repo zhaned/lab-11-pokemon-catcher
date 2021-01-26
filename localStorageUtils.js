@@ -28,7 +28,7 @@ export function encounter(pokemonId){ //also generates pokemon for results
         };
         stats.push(addPoke);
     } else {
-        pokemon.encounter++;
+        pokeId.encounter++;
     }
     setPokemonStats(stats);
 }

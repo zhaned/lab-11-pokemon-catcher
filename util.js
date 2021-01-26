@@ -1,6 +1,6 @@
 import pokemon from './data.js';
 import { encounter, caught } from './localStorageUtils.js';
-const displayPoke = document.getElementById('pokemon');
+
 
 
 let turns = 0;
@@ -30,6 +30,7 @@ export function generatePokemon(){
     const display2 = getDisplay(pokemonTwo);
     const display3 = getDisplay(pokemonThree);
 
+    const displayPoke = document.getElementById('pokemon');
     displayPoke.textContent = '';
     displayPoke.append(display1, display2, display3);
 }
@@ -56,6 +57,5 @@ export function getDisplay(item) {
             window.location = 'results'; //takes to the results page
         }
     });
-    
     return image;
 }

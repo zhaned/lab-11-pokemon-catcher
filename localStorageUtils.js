@@ -19,7 +19,7 @@ export function encounter(pokemonId){ //also generates pokemon for results
     const pokeId = findUnderlineId(pokemonId, stats);
 
     if (!pokeId){
-        const pokemonStats = findUnderlineId(pokemon, pokemonId);
+        const pokemonStats = findUnderlineId(pokemonId, pokemon);
         const addPoke = {
             name: pokemonStats.pokebase, //this is where the name is in the data
             _id: pokemonId,

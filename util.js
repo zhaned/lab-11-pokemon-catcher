@@ -1,5 +1,7 @@
 import pokemon from './data.js';
+import { encounter, caught } from './localStorageUtils.js';
 const displayPoke = document.getElementById('pokemon');
+
 
 let turns = 0;
 
@@ -20,8 +22,16 @@ export function generatePokemon(){
         pokemonThree = getPokemon();
     }
 
-    
+    encounter(pokemonOne._id);
+    encounter(pokemonTwo._id);
+    encounter(pokemonThree._id);
 
+    const display1 = getDisplay(pokemonOne);
+    const display2 = getDisplay(pokemonTwo);
+    const display3 = getDisplay(pokemonThree);
+
+    displayPoke.textContent = '';
+    displayPoke.append(display1, display2, display3);
 }
 
 export function findUnderlineId(id, stats){
@@ -30,4 +40,22 @@ export function findUnderlineId(id, stats){
             return i;
         }
     }
+}
+
+export function getDisplay(item) {
+    const image = document.createElement('img');
+    image.src = item.url_image;
+    image.classList.add('pokemon-image');
+
+    image.addEventListener('click', () => {
+        caught(item._id);
+        if (turns < 10) {
+            generatePokemon();
+        
+        } else {
+            window.location = 'results'; //takes to the results page
+        }
+    });
+    
+    return image;
 }

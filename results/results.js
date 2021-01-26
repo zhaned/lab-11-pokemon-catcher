@@ -1,8 +1,14 @@
 import { getPokeData } from '../localStorageUtils.js';
 import { labelsArray, encounterArray, caughtArray } from './mungeUtil.js';
 
+const resetButton = document.getElementById('reset');
 const pokeData = getPokeData();
 var ctx = document.getElementById('myChart').getContext('2d');
+
+resetButton.addEventListener('click', () =>{
+    localStorage.clear();
+    window.location = '..';
+});
 
 var myChart = new Chart(ctx, { //eslint-disable-line
     type: 'bar',
@@ -25,7 +31,8 @@ var myChart = new Chart(ctx, { //eslint-disable-line
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    stepSize: 1
                 }
             }]
         }
